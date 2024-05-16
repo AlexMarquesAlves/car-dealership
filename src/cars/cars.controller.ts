@@ -11,7 +11,7 @@ export class CarsController {
   }
   @Get(':id')
   async getCarById(@Param('id') id: string) {
-    log(id)
+    log({ id })
     return this.cars[id]
   }
 }
