@@ -3,15 +3,15 @@ import { log } from 'console'
 
 @Controller('cars')
 export class CarsController {
-  private cars = ['Toyota', 'Honda', 'Jeep']
+  // private cars = ['Toyota', 'Honda', 'Jeep']
 
   @Get()
   async getAllCars() {
-    return this.cars
+    return this.carsService
   }
   @Get(':id')
   async getCarById(@Param('id') id: string) {
     log({ id })
-    return this.cars[id]
+    return this.carsService[id]
   }
 }
