@@ -19,4 +19,8 @@ export class CarsService {
       model: 'Wrangler',
     },
   ]
+
+  findAll() {
+    return this.cars
+  }
 }
