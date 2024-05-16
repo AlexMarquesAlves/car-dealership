@@ -8,11 +8,11 @@ export class CarsController {
 
   @Get()
   async getAllCars() {
-    return this.carsService
+    return this.carsService.findAll()
   }
   @Get(':id')
   async getCarById(@Param('id') id: string) {
     log({ id })
-    return this.carsService[id]
+    return this.carsService.findOneById(id)
   }
 }
