@@ -1,9 +1,10 @@
 import { Controller, Get, Param } from '@nestjs/common'
 import { log } from 'console'
+import { CarsService } from './cars.service'
 
 @Controller('cars')
 export class CarsController {
-  // private cars = ['Toyota', 'Honda', 'Jeep']
+  constructor(private readonly carsService: CarsService) {}
 
   @Get()
   async getAllCars() {
