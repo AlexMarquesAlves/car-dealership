@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   ParseIntPipe,
@@ -27,16 +28,18 @@ export class CarsController {
   @Post()
   async createCar(@Body() body) {
     console.log()
-    return {
-      body,
-    }
+    return { body }
   }
 
   @Patch(':id')
   async updateCar(@Param('id', ParseIntPipe) id: number, @Body() body) {
     console.log()
-    return {
-      body,
-    }
+    return { body }
+  }
+
+  @Delete(':id')
+  async deleteCar(@Param('id', ParseIntPipe) id: number) {
+    console.log()
+    return { id }
   }
 }
