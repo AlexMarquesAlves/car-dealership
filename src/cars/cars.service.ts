@@ -1,4 +1,4 @@
-import { Injectable, Param } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class CarsService {
@@ -24,7 +24,8 @@ export class CarsService {
     return this.cars
   }
 
-  async findOneById(@Param('cars') cars) {
-    return this.cars[cars].id
+  async findOneById(id: number) {
+    const car = this.cars.find((car) => car.id === id)
+    return car
   }
 }
