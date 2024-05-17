@@ -1,4 +1,12 @@
-import { Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Patch,
+  Post,
+} from '@nestjs/common'
 import { CarsService } from './cars.service'
 
 @Controller('cars')
@@ -17,11 +25,18 @@ export class CarsController {
   }
 
   @Post()
-  async createCar() {
+  async createCar(@Body() body) {
     console.log()
     return {
-      ok: true,
-      method: 'Post',
+      body,
+    }
+  }
+
+  @Patch()
+  async updateCar(@Body() body) {
+    console.log()
+    return {
+      body,
     }
   }
 }
