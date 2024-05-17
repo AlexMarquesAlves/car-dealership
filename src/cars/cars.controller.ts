@@ -32,8 +32,8 @@ export class CarsController {
     }
   }
 
-  @Patch()
-  async updateCar(@Body() body) {
+  @Patch(':id')
+  async updateCar(@Param('id', ParseIntPipe) id: number, @Body() body) {
     console.log()
     return {
       body,
