@@ -9,38 +9,37 @@ import {
   Post,
 } from '@nestjs/common'
 import { CarsService } from './cars.service'
-import { CreateCarDto } from './dtos/create-car.dto'
+import { CreateCarDto, UpdateCarDto } from './dtos'
 
 @Controller('cars')
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
 
   @Get()
-  async getAllCars() {
+  getAllCars() {
     return this.carsService.findAll()
   }
 
   @Get(':id')
-  async getCarById(@Param('id', ParseUUIDPipe) id: string) {
-    console.log({ id })
+  getCarById(@Param('id', ParseUUIDPipe) id: string) {
     return this.carsService.findOneById(id)
   }
 
   @Post()
-  async createCar(@Body() createCarDto: CreateCarDto) {
-    console.log()
-    return this.carsService.create(createCarDto)
+  createCar(@Body() createCardDto: CreateCarDto) {
+    return this.carsService.create(createCardDto)
   }
 
   @Patch(':id')
-  async updateCar(@Param('id', ParseUUIDPipe) id: string, @Body() body) {
-    console.log()
-    return { body }
+  updateCar(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateCarDto: UpdateCarDto,
+  ) {
+    return this.carsService.update(id, updateCarDto)
   }
 
   @Delete(':id')
-  async deleteCar(@Param('id', ParseUUIDPipe) id: string) {
-    console.log()
-    return { id }
+  deleteCar(@Param('id', ParseUUIDPipe) id: string) {
+    return this.carsService.delete(id)
   }
 }
